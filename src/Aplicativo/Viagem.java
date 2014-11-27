@@ -10,7 +10,7 @@ public class Viagem {
 
 	private Condutor condutor;
 	private List<Conduzido> conduzidos = new ArrayList<Conduzido>();
-	private List<Localizacao> rota = new ArrayList<Localizacao>();
+	private List<Localizacao> rota;
 	Date dataHora;
 	private double valorDaViagem;
 
@@ -63,14 +63,13 @@ public class Viagem {
 	}
 	
 	public void setConduzido(Conduzido obj) {
-		/*if(this.condutor.getVeiculo().validaVagas() == true) {
+		if(this.condutor.getVeiculo().validaVagas() == true) {
 			conduzidos.add(obj);
 			obj.setEmViagem(true);
 		}
 		else {
 			System.out.println("NÃ£o hÃ¡ vagas no veiculo, favor tentar mais tarde.");
-		}*/
-		conduzidos.add(obj);
+		}
 	}
 
 	public double getValorDaViagem() {
@@ -112,21 +111,21 @@ public class Viagem {
 		}
 	}
 	
-	//Novo método criado para calcular o total da viagem
+	/*
 	public void calculaValorViagem(ArrayList <Localizacao> localizacao)
 	{
 		valorDaViagem = localizacao.get(0).getValorViagem() + localizacao.get(1).getValorViagem() + localizacao.get(2).getValorViagem() + localizacao.get(3).getValorViagem();
-	}
+	}*/
 
 	// acho que não é necessário
 	public Viagem(Condutor condutor, List<Localizacao> rotaFinal, double valorDaViagem) {
 		this.condutor = condutor;
-		this.rota = rotaFinal;
+		this.rota = condutor.getLocalizacoes();
 		this.valorDaViagem = valorDaViagem;
 	}
-	public Viagem(Condutor condutor, List<Localizacao> rotaFinal) {
+	public Viagem(Condutor condutor) {
 		this.condutor = condutor;
-		this.rota = rotaFinal;
+		this.rota = condutor.getLocalizacoes();
 	}
 
 	public Viagem() {

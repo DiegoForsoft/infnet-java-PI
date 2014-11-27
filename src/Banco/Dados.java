@@ -32,5 +32,10 @@ public class Dados
 	
 	public static final List<Localizacao> LOCALIZACAO_TREIS = new ArrayList<Localizacao>(Arrays.asList(new Localizacao[]{Localizacao.LINS, Localizacao.LEBLON, 
 	Localizacao.ROCINHA, Localizacao.LEME}));
+	
+	//Banco de dados do veículo
+	public static final String[] Placa = {"JMH-1245","GHJ-4579", "UTX-4397", "ALM-7712", "RMN-4838"};
+	
+	public static final int[] NumeroDeVagas = {1,2,3,4,5};
 			
 }

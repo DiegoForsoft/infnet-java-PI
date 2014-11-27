@@ -11,11 +11,8 @@ public class Condutor extends Pessoa {
 
 	private String CNH;
 	private Veiculo veiculo;
+	private List<Localizacao> localizacoes;
 
-	public void cadastrarLocalizacao(Viagem v, List<Localizacao> lista) {
-		v.setRotaFinal(lista);
-	}
-	
 	public Condutor() {
 		super();
 	}
@@ -25,6 +22,14 @@ public class Condutor extends Pessoa {
 		super(nome, idade, celular, rg, cpf, facebook);
 	}
 
+	public Condutor(String cNH, Veiculo veiculo, String nome, int idade,
+			String celular, String rg, String cpf, String facebook, List<Localizacao> localizacaoRecebida) {
+		super(nome, idade, celular, rg, cpf, facebook);
+		this.CNH = cNH;
+		this.veiculo = veiculo;
+		this.localizacoes = localizacaoRecebida;
+	}
+	
 	public Condutor(String cNH, Veiculo veiculo, String nome, int idade,
 			String celular, String rg, String cpf, String facebook) {
 		super(nome, idade, celular, rg, cpf, facebook);
@@ -53,6 +58,14 @@ public class Condutor extends Pessoa {
 		this.cpf = cpf;
 		this.facebook = facebook;
 		this.localizacaoBairro = localizacaoBairro;
+	}
+	
+	public List<Localizacao> getLocalizacoes() {
+		return localizacoes;
+	}
+
+	public void setLocalizacoes(List<Localizacao> localizacoes) {
+		this.localizacoes = localizacoes;
 	}
 
 	public String getCNH() {

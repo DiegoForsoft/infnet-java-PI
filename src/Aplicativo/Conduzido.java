@@ -36,6 +36,16 @@ public class Conduzido extends Pessoa {
 		this.setDinheiroParaCombustivel(this.getDinheiroParaCombustivel() - valorPagar);
 	}
 	
+	public void mostraConduzidos() {
+		System.out.println(this.getNome());
+		System.out.println(this.getIdade());
+		System.out.println(this.getCelular());
+		System.out.println(this.getRg());
+		System.out.println(this.getCpf());
+		System.out.println(this.getFacebook());
+		System.out.println(this.getDinheiroParaCombustivel());
+	}
+	
 	public void atualizarDados(double dinheiroParaCombustivel, String nome,
 			int idade, String celular, String rg, String cpf, String facebook,
 			Localizacao localizacaoBairro) {
@@ -100,7 +110,13 @@ public class Conduzido extends Pessoa {
 
 	@Override
 	public String toString() {
-		return "Conduzido [nome=" + this.nome + "]";
+		return "Conduzido [emViagem=" + emViagem + ", dinheiroParaCombustivel="
+				+ dinheiroParaCombustivel + ", nome=" + nome + ", idade="
+				+ idade + ", celular=" + celular + ", rg=" + rg + ", cpf="
+				+ cpf + ", facebook=" + facebook + ", localizacaoBairro="
+				+ localizacaoBairro + ", status=" + status + "]";
 	}
+
+	
 
 }
