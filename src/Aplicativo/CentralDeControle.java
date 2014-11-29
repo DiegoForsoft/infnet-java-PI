@@ -2,17 +2,19 @@ package Aplicativo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import Enumeracoes.Localizacao;
 
 public class CentralDeControle {
 	
-	private List<Condutor> condutores = new ArrayList<Condutor>();
-	private List<Conduzido> conduzidos = new ArrayList<Conduzido>();
+	private Set<Condutor> condutores = new HashSet<Condutor>();
+	private Set<Conduzido> conduzidos = new HashSet<Conduzido>();
 	private List<Viagem> viagens = new ArrayList<Viagem>();
-
+	
 //	public void notificiarLocalizacaoCompativel() {
 //		for (Condutor condutor : condutores) {
 //			Viagem v1 = new Viagem();
@@ -81,10 +83,10 @@ public class CentralDeControle {
 	public void cadastrarCondutor(Condutor obj) {		
 		if(estaCadastradoCondutor(obj) == false) {
 			condutores.add(obj);
-			System.out.println("O "+obj.getNome()+" foi cadastrado.\n");
+			System.out.println("Condutor(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
 		}
 		else {
-			System.out.println("Pessoa j√° cadastada no sistema.\n");
+			System.out.println("Pessoa j· cadastrada no sistema.\n");
 		}
 	
 	}
@@ -96,10 +98,10 @@ public class CentralDeControle {
 	public void cadastrarConduzido(Conduzido obj) {
 		if(estaCadastradoConduzido(obj) == false) {
 			conduzidos.add(obj);
-			System.out.println("O "+obj.getNome()+" foi cadastrado no sistema.\n");
+			System.out.println("Conduzido(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
 		}
 		else {
-			System.out.println("Pessoa j√° cadastada no sistema.\n");
+			System.out.println("Pessoa j· cadastada no sistema.\n");
 		}
 	}
 
@@ -132,24 +134,41 @@ public class CentralDeControle {
 	public void cadastrarViagem(Viagem obj) {
 		if(temViajem(obj) == false) {
 			viagens.add(obj);
+			System.out.println("Viagem cadastrada no sistema\n");
 		}
 		else {
 			System.out.println("Impossivel cadastrar uma viagem existente.\n");
 		}
 	}
 	
+	public void separador()//Separa as informaÁıes para uma melhor visualizaÁ„o
+	{
+		System.out.println("\n----------------------------------------------------------------------------------------------------------------------------------------------\n");
+	}
 	
+	public Set<Condutor> getCondutores() {
+		return condutores;
+	}
+
+	public Set<Conduzido> getConduzidos() {
+		return conduzidos;
+	}
+
+	public List<Viagem> getViagens() {
+		return viagens;
+	}
+
 	//Esses 3 n√£o estamos usando, podem ser usados na constru√ß√£o de um .log.
 	public Viagem pesquisarViagem(Viagem obj) {
 		return viagens.get(viagens.indexOf(obj));
 	}
 
-	public Condutor pesquisarCondutor(Condutor obj) {
-		return condutores.get(condutores.indexOf(obj));
-	}
-
-	public Conduzido pesquisarConduzido(Conduzido obj) {
-		return conduzidos.get(conduzidos.indexOf(obj));
-	}
+//	public Condutor pesquisarCondutor(Condutor obj) {
+//		return condutores.get(condutores.indexOf(obj));
+//	}
+//
+//	public Conduzido pesquisarConduzido(Conduzido obj) {
+//		return conduzidos.get(conduzidos.indexOf(obj));
+//	}
 
 }

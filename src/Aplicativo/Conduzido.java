@@ -10,20 +10,22 @@ public class Conduzido extends Pessoa {
 
 	private boolean emViagem = false;
 	private double dinheiroParaCombustivel;
+	private Localizacao localizacaoBairro;
 
 	public Conduzido() {
 		super();
 	}
 
 	public Conduzido(String nome, int idade, String celular, String rg,
-			String cpf, String facebook, Localizacao localizacaoBairro) {
-		super(nome, idade, celular, rg, cpf, facebook, localizacaoBairro);
+			String cpf, String facebook) {
+		super(nome, idade, celular, rg, cpf, facebook);
 	}
 
 	public Conduzido(double dinheiroParaCombustivel, String nome, int idade, String celular, String rg, String cpf,
 			String facebook, Localizacao localizacaoBairro) {
-		super(nome, idade, celular, rg, cpf, facebook, localizacaoBairro);
+		super(nome, idade, celular, rg, cpf, facebook);
 		this.dinheiroParaCombustivel = dinheiroParaCombustivel;
+		this.localizacaoBairro = localizacaoBairro;
 	}
 
 	public void acionarPolicia() {
@@ -35,15 +37,18 @@ public class Conduzido extends Pessoa {
 		this.setEmViagem(false);
 		this.setDinheiroParaCombustivel(this.getDinheiroParaCombustivel() - valorPagar);
 	}
-	
+	//Precisa Terminar
 	public void mostraConduzidos() {
-		System.out.println(this.getNome());
-		System.out.println(this.getIdade());
-		System.out.println(this.getCelular());
-		System.out.println(this.getRg());
-		System.out.println(this.getCpf());
-		System.out.println(this.getFacebook());
-		System.out.println(this.getDinheiroParaCombustivel());
+		System.out.println("Conduzido: ");
+		super.mostraPessoa();
+		System.out.println("Dinheiro para Combustível: " + this.getDinheiroParaCombustivel());
+		System.out.println("Destino: " + this.getLocalizacaoBairro());
+		if(this.isEmViagem()) {
+			System.out.println("Está em viagem");
+		}
+		else {
+			System.out.println("Não está em viagem");
+		}
 	}
 	
 	public void atualizarDados(double dinheiroParaCombustivel, String nome,
@@ -59,6 +64,19 @@ public class Conduzido extends Pessoa {
 		this.localizacaoBairro = localizacaoBairro;
 	}
 	
+	public void validaDadosConduzido() {
+		System.out.print("Validando Dados do Conduzido...");
+		super.validaDados();
+	}
+	
+	public Localizacao getLocalizacaoBairro() {
+		return localizacaoBairro;
+	}
+
+	public void setLocalizacaoBairro(Localizacao localizacaoBairro) {
+		this.localizacaoBairro = localizacaoBairro;
+	}
+
 	public boolean isEmViagem() {
 		return emViagem;
 	}

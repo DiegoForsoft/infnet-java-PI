@@ -10,9 +10,8 @@ public class Veiculo {
 
 	private String numeroDaPlaca;
 	private CorDoCarro cor;
-	
 	private int quantidadeDeVagas;
-
+	
 	private boolean validaPlacaDeCarro(String placa) {
 		return placa.matches("[A-Z]{3}-\\d{4}");
 	}
@@ -55,14 +54,19 @@ public class Veiculo {
 		System.out.println("A cor: " + this.getCor() + " foi escolhida\n");
 	}
 
-	
-
 	private boolean validaQuantidadeDeCombustivel(double qt) {
 		if (qt > 0) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public void mostraVeiculo() {
+		System.out.println("\nVeiculo: ");
+		System.out.println("Numero da Placa: " + this.getNumeroDaPlaca());
+		System.out.println("Cor: " + this.getCor());
+		System.out.println("Quantidade de Vagas: " + this.getQuantidadeDeVagas());
 	}
 
 	public int getQuantidadeDeVagas() {

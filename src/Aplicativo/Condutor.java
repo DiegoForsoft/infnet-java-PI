@@ -3,6 +3,7 @@ package Aplicativo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import Enumeracoes.Localizacao;
 import Banco.Dados;
 
@@ -48,7 +49,7 @@ public class Condutor extends Pessoa {
 
 	public void atualizarDados(String cNH, Veiculo veiculo, String nome,
 			int idade, String celular, String rg, String cpf, String facebook,
-			Localizacao localizacaoBairro) {
+			ArrayList <Localizacao> localizacaoBairro) {
 		this.CNH = cNH;
 		this.veiculo = veiculo;
 		this.nome = nome;
@@ -57,9 +58,63 @@ public class Condutor extends Pessoa {
 		this.rg = rg;
 		this.cpf = cpf;
 		this.facebook = facebook;
-		this.localizacaoBairro = localizacaoBairro;
+		this.localizacoes = localizacaoBairro;
 	}
 	
+	public void mostraCondutor() {
+		System.out.println("Condutor: ");
+		super.mostraPessoa();
+		System.out.println("CNH: " + this.getCNH());
+		System.out.println("\nLocalizações: ");
+		for(Localizacao l: localizacoes) {
+			System.out.println("Localização por onde irá passar: " + l.name());
+		}
+		veiculo.mostraVeiculo();
+	}
+	
+	public void validaDadosCondutor() {
+		System.out.print("Validando Dados do Condutor...");
+		super.validaDados();
+	}
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((CNH == null) ? 0 : CNH.hashCode());
+		result = prime * result
+				+ ((localizacoes == null) ? 0 : localizacoes.hashCode());
+		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Condutor other = (Condutor) obj;
+		if (CNH == null) {
+			if (other.CNH != null)
+				return false;
+		} else if (!CNH.equals(other.CNH))
+			return false;
+		if (localizacoes == null) {
+			if (other.localizacoes != null)
+				return false;
+		} else if (!localizacoes.equals(other.localizacoes))
+			return false;
+		if (veiculo == null) {
+			if (other.veiculo != null)
+				return false;
+		} else if (!veiculo.equals(other.veiculo))
+			return false;
+		return true;
+	}
+
 	public List<Localizacao> getLocalizacoes() {
 		return localizacoes;
 	}

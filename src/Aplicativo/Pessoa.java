@@ -12,25 +12,12 @@ public abstract class Pessoa {
 	protected String rg;
 	protected String cpf;
 	protected String facebook;
-	protected Localizacao localizacaoBairro;
 	protected StatusEnum status;
 
 	protected Pessoa() {
 		super();
 	}
 
-	protected Pessoa(String nome, int idade, String celular, String rg,
-			String cpf, String facebook, Localizacao localizacaoBairro) {
-
-		this.nome = nome;
-		this.idade = idade;
-		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
-		this.facebook = facebook;
-		this.localizacaoBairro = localizacaoBairro;
-	}
-	
 	protected Pessoa(String nome, int idade, String celular, String rg,
 			String cpf, String facebook) {
 
@@ -184,8 +171,7 @@ public abstract class Pessoa {
 	}
 
 	public void atualizarDados(String nome, int idade, String celular,
-			String rg, String cpf, String facebook,
-			Localizacao localizacaoBairro) {
+			String rg, String cpf, String facebook) {
 
 		this.nome = nome;
 		this.idade = idade;
@@ -193,7 +179,6 @@ public abstract class Pessoa {
 		this.rg = rg;
 		this.cpf = cpf;
 		this.facebook = facebook;
-		this.localizacaoBairro = localizacaoBairro;
 	}
 
 	public boolean validaNome(String nome) {
@@ -273,20 +258,47 @@ public abstract class Pessoa {
 		}
 	}
 
-	public Localizacao getLocalizacaoBairro() {
-		return localizacaoBairro;
-	}
-
-	public void setLocalizacaoBairro(Localizacao localizacaoBairro) {
-		this.localizacaoBairro = localizacaoBairro;
-	}
-
 	public StatusEnum getStatus() {
 		return status;
 	}
 
 	public void setStatus(StatusEnum status) {
 		this.status = status;
+	}
+	
+	public void validaDados()
+	{
+		if(this.validaNome(nome)) {
+			if(this.validaCelular()) {
+				if(this.validaCPF()) {
+					if(this.validaIdade()) {
+						if(this.validaRG()) {
+							if(this.validaFacebook()) {
+								System.out.println("Todos os Dados são Válidos\n");
+							}
+							else {
+								System.out.println("Facebook inválido");
+							}
+						}
+						else {
+							System.out.println("RG inválido");
+						}
+					}
+					else {
+						System.out.println("Idade inválida");
+					}
+				}
+				else {
+					System.out.println("CPF inválido");
+				}
+			}
+			else {
+				System.out.println("Celular inválido");
+			}
+		}
+		else {
+			System.out.println("Nome inválido");
+		}
 	}
 
 	@Override
@@ -299,10 +311,6 @@ public abstract class Pessoa {
 		result = prime * result
 				+ ((facebook == null) ? 0 : facebook.hashCode());
 		result = prime * result + idade;
-		result = prime
-				* result
-				+ ((localizacaoBairro == null) ? 0 : localizacaoBairro
-						.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		return result;
@@ -337,11 +345,6 @@ public abstract class Pessoa {
 			return false;
 		if (idade != other.idade)
 			return false;
-		if (localizacaoBairro == null) {
-			if (other.localizacaoBairro != null)
-				return false;
-		} else if (!localizacaoBairro.equals(other.localizacaoBairro))
-			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -359,10 +362,16 @@ public abstract class Pessoa {
 	public String toString() {
 		return "Pessoa [nome=" + nome + ", idade=" + idade + ", celular="
 				+ celular + ", rg=" + rg + ", cpf=" + cpf + ", facebook="
-				+ facebook + ", localizacaoBairro=" + localizacaoBairro
-				+ ", status=" + status + "]";
+				+ facebook + ", localizacaoBairro=" + ", status=" + status + "]";
 	}
 	
-	
+	public void mostraPessoa() {
+		System.out.println("Nome: " + this.getNome());
+		System.out.println("Idade: " + this.getIdade());
+		System.out.println("Celular: " + this.getCelular());
+		System.out.println("RG: " + this.getRg());
+		System.out.println("CPF: " + this.getCpf());
+		System.out.println("Facebook: " + this.getFacebook());
+	}
 
 }
