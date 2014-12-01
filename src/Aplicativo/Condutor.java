@@ -1,11 +1,9 @@
 package Aplicativo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Enumeracoes.Localizacao;
-import Banco.Dados;
 
 
 public class Condutor extends Pessoa {

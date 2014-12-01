@@ -1,10 +1,6 @@
 package Aplicativo;
 
-import java.util.ArrayList;
-
 import Enumeracoes.Localizacao;
-import Enumeracoes.StatusEnum;
-import Aplicativo.Condutor;
 
 public class Conduzido extends Pessoa {
 

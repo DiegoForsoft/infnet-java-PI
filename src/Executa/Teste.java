@@ -4,8 +4,6 @@ import Aplicativo.*;
 import Banco.*;
 import Enumeracoes.*;
 
-import java.util.ArrayList;
-
 public class Teste {
 
 	public static void main(String[] args) {
@@ -47,10 +45,6 @@ public class Teste {
 		
 		Viagem primeiraViagem = new Viagem(Condutor1);
 		
-		primeiraViagem.setConduzido(Conduzido1);
-		primeiraViagem.setConduzido(Conduzido2);
-		primeiraViagem.setConduzido(Conduzido3);
-		
 		CDC.cadastrarViagem(primeiraViagem);
 		
 		CDC.cadastrarCondutor(Condutor1);
@@ -64,6 +58,6 @@ public class Teste {
 		CDC.comecarViagem();
 		CDC.terminarViagem();
 		
-	}
+		}
 
 }

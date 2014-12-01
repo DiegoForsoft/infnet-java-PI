@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 import java.util.Set;
 
 import Enumeracoes.Localizacao;
@@ -38,15 +37,14 @@ public class CentralDeControle {
 //	}
 	
 	public void comecarViagem() {
-		for (Viagem viagem : viagens) {  
+		for (Viagem viagem : viagens) { 
+			System.out.println("Iniciando a busca por caronas...\n");
 			for (Conduzido conduzido : conduzidos) { 
-				for (Localizacao localizacao : viagem.getRotaFinal()) {  
+				for (Localizacao localizacao : viagem.getRotaFinal()) {
+					System.out.println("Passando pela local " + localizacao);
 					if(conduzido.getLocalizacaoBairro().equals(localizacao) && conduzido.isEmViagem() == false) {
 						viagem.setConduzido(conduzido);
-						System.out.println("Uma viagem foi formada com o conduzido "+ conduzido.getNome() + "Ate "+ conduzido.getLocalizacaoBairro());
-					}
-					else {
-						System.out.println("O conduzido "+conduzido.getNome()+" esta em viagem.\n");
+						System.out.println("Uma viagem foi formada com o conduzido "+ conduzido.getNome() + " Ate "+ conduzido.getLocalizacaoBairro() + "com o condutor " + viagem.getCondutor().getNome());
 					}
 				}
 			}
@@ -68,7 +66,6 @@ public class CentralDeControle {
 					}
 				}
 			}
-			viagens.remove(viagem);
 		}
 	}
 

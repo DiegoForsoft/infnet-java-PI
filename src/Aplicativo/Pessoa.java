@@ -1,7 +1,5 @@
 package Aplicativo;
 
-import java.util.ArrayList;
-
 import Enumeracoes.*;
 
 public abstract class Pessoa {
