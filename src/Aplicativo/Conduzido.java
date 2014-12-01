@@ -55,8 +55,8 @@ public class Conduzido extends Pessoa {
 		this.nome = nome;
 		this.idade = idade;
 		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
+		this.RG = rg;
+		this.CPF = cpf;
 		this.facebook = facebook;
 		this.localizacaoBairro = localizacaoBairro;
 	}
@@ -127,8 +127,8 @@ public class Conduzido extends Pessoa {
 	public String toString() {
 		return "Conduzido [emViagem=" + emViagem + ", dinheiroParaCombustivel="
 				+ dinheiroParaCombustivel + ", nome=" + nome + ", idade="
-				+ idade + ", celular=" + celular + ", rg=" + rg + ", cpf="
-				+ cpf + ", facebook=" + facebook + ", localizacaoBairro="
+				+ idade + ", celular=" + celular + ", rg=" + RG + ", cpf="
+				+ CPF + ", facebook=" + facebook + ", localizacaoBairro="
 				+ localizacaoBairro + ", status=" + status + "]";
 	}
 

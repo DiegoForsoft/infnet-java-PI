@@ -53,8 +53,8 @@ public class Condutor extends Pessoa {
 		this.nome = nome;
 		this.idade = idade;
 		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
+		this.RG = rg;
+		this.CPF = cpf;
 		this.facebook = facebook;
 		this.localizacoes = localizacaoBairro;
 	}

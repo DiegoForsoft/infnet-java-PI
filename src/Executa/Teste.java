@@ -1,12 +1,14 @@
 package Executa;
 
+import java.io.FileNotFoundException;
+
 import Aplicativo.*;
 import Banco.*;
 import Enumeracoes.*;
 
 public class Teste {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 		
 		System.out.println("Aplicativo Carona Coletiva: \n");
 		
@@ -16,16 +18,16 @@ public class Teste {
 		Conduzido Conduzido2 = new Conduzido(Dados.dinheiroCombustivel[8], Dados.nomes[1],Dados.idade[1],Dados.celular[1],Dados.rg[1], Dados.cpf[1],Dados.facebook[1], Dados.LOCALIZACAO_UM.get(1));
 		Conduzido Conduzido3 = new Conduzido(Dados.dinheiroCombustivel[8], Dados.nomes[2],Dados.idade[2],Dados.celular[2],Dados.rg[2], Dados.cpf[2],Dados.facebook[2], Dados.LOCALIZACAO_UM.get(2));
 		
-//		Conduzido1.validaDadosConduzido();
+//		Conduzido1.validaDadosConduzido()S;
 //		Conduzido2.validaDadosConduzido();
 //		Conduzido3.validaDadosConduzido();
 		
 		Conduzido1.mostraConduzidos();
-		CDC.separador();
+		CentralDeControle.separador();;
 		Conduzido2.mostraConduzidos();
-		CDC.separador();
+		CentralDeControle.separador();;
 		Conduzido3.mostraConduzidos();
-		CDC.separador();
+		CentralDeControle.separador();;
 		
 		Condutor Condutor1 = new Condutor(Dados.CNH[0], new Veiculo(Dados.Placa[3], CorDoCarro.BRANCO, Dados.NumeroDeVagas[3]), Dados.nomes[3], Dados.idade[3], Dados.celular[3], Dados.rg[3], Dados.cpf[3], Dados.facebook[3], Dados.LOCALIZACAO_DOIS);
 		Condutor Condutor2 = new Condutor(Dados.CNH[4], new Veiculo(Dados.Placa[4], CorDoCarro.VERMELHO, Dados.NumeroDeVagas[2]), Dados.nomes[4], Dados.idade[4], Dados.celular[4], Dados.rg[4], Dados.cpf[4], Dados.facebook[4], Dados.LOCALIZACAO_TREIS);
@@ -37,11 +39,11 @@ public class Teste {
 //		Condutor3.validaDadosCondutor();
 		
 		Condutor1.mostraCondutor();
-		CDC.separador();
+		CentralDeControle.separador();;
 		Condutor2.mostraCondutor();
-		CDC.separador();
+		CentralDeControle.separador();;
 		Condutor3.mostraCondutor();
-		CDC.separador();
+		CentralDeControle.separador();;
 		
 		Viagem primeiraViagem = new Viagem(Condutor1);
 		
@@ -61,6 +63,6 @@ public class Teste {
 		
 		CDC.terminarViagem();
 		
-		}
+	}
 
 }

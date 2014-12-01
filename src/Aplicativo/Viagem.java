@@ -2,9 +2,13 @@ package Aplicativo;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
+import java.util.logging.SimpleFormatter;
 
 import Enumeracoes.Localizacao;
 
@@ -23,16 +27,24 @@ public class Viagem {
 	}
 	
 	public void geraLog() throws FileNotFoundException {
+		DateFormat dt = DateFormat.getDateInstance();
 		PrintStream s = new PrintStream("viagens.log");
+	
+		dt.format(this.getDataHora());
 		
 		CentralDeControle.separador();
 		s.println("Gerando uma nova viajem.\n");
-		s.println("Condutor da viajem: " + this.getCondutor());
+		s.println("Condutor da viajem: " + this.getCondutor().getNome());
 		s.println("Localizações da viajem: " + this.mostraLocalizacoesQueVaiPassar());
-		s.println("Os conduzidos da viajem são: ");
+		s.print("Os conduzidos da viajem são: ");
+		s.println("Data hora viajem: " + dt.format(this.getDataHora()) + " " + this.getDataHora().getTime());
+		System.out.println(""  );
 		for (Conduzido conduzido : conduzidos) {
 			s.print(conduzido.getNome());
+			s.print(", ");
 		}
+		System.out.println("Log da viajem atual foi gerado...\n");
+		s.println("\n------------------------------------------------------------------------------");
 	}
 	
 	public void metodoComecarViajem() throws InterruptedException {
