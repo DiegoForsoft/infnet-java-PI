@@ -1,11 +1,9 @@
 package Aplicativo;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import Enumeracoes.Localizacao;
-import Banco.Dados;
 
 
 public class Condutor extends Pessoa {
@@ -55,8 +53,8 @@ public class Condutor extends Pessoa {
 		this.nome = nome;
 		this.idade = idade;
 		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
+		this.RG = rg;
+		this.CPF = cpf;
 		this.facebook = facebook;
 		this.localizacoes = localizacaoBairro;
 	}
@@ -72,10 +70,10 @@ public class Condutor extends Pessoa {
 		veiculo.mostraVeiculo();
 	}
 	
-	public void validaDadosCondutor() {
-		System.out.print("Validando Dados do Condutor...");
-		super.validaDados();
-	}
+//	public void validaDadosCondutor() {
+//		System.out.print("Validando Dados do Condutor...");
+//		super.validaDados();
+//	}
 	
 	@Override
 	public int hashCode() {

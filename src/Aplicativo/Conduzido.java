@@ -1,10 +1,6 @@
 package Aplicativo;
 
-import java.util.ArrayList;
-
 import Enumeracoes.Localizacao;
-import Enumeracoes.StatusEnum;
-import Aplicativo.Condutor;
 
 public class Conduzido extends Pessoa {
 
@@ -35,6 +31,7 @@ public class Conduzido extends Pessoa {
 	
 	public void sairDoCarro(double valorPagar) {
 		this.setEmViagem(false);
+		System.out.println("O conduzido(a) " + this.getNome() + " chegou a sua localização e esta pagando a viajem no valor de: " + valorPagar + " e esta saindo do carro.");
 		this.setDinheiroParaCombustivel(this.getDinheiroParaCombustivel() - valorPagar);
 	}
 	//Precisa Terminar
@@ -58,16 +55,16 @@ public class Conduzido extends Pessoa {
 		this.nome = nome;
 		this.idade = idade;
 		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
+		this.RG = rg;
+		this.CPF = cpf;
 		this.facebook = facebook;
 		this.localizacaoBairro = localizacaoBairro;
 	}
 	
-	public void validaDadosConduzido() {
-		System.out.print("Validando Dados do Conduzido...");
-		super.validaDados();
-	}
+//	public void validaDadosConduzido() {
+//		System.out.print("Validando Dados do Conduzido...");
+//		super.validaDados();
+//	}
 	
 	public Localizacao getLocalizacaoBairro() {
 		return localizacaoBairro;
@@ -130,8 +127,8 @@ public class Conduzido extends Pessoa {
 	public String toString() {
 		return "Conduzido [emViagem=" + emViagem + ", dinheiroParaCombustivel="
 				+ dinheiroParaCombustivel + ", nome=" + nome + ", idade="
-				+ idade + ", celular=" + celular + ", rg=" + rg + ", cpf="
-				+ cpf + ", facebook=" + facebook + ", localizacaoBairro="
+				+ idade + ", celular=" + celular + ", rg=" + RG + ", cpf="
+				+ CPF + ", facebook=" + facebook + ", localizacaoBairro="
 				+ localizacaoBairro + ", status=" + status + "]";
 	}
 

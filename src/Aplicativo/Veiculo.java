@@ -1,9 +1,5 @@
 package Aplicativo;
 
-import java.util.List;
-import java.util.Scanner;
-import Enumeracoes.StatusEnum;
-
 import Enumeracoes.CorDoCarro;
 
 public class Veiculo {
