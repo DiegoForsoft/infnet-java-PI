@@ -16,7 +16,7 @@ public class Dados
 	public static final String[] facebook = {"diego.alves@facebook.com", "victor.lopes@facebook.com", "milton.pereira@facebook.com", "leonardo.villela@facebook.com", "fernanda.almeida@facebook.com", "felipe.aguiar@facebook.com"};
 	
 	//Banco de dados do Conduzido
-	public static final double[] dinheiroCombustivel = {5,10,20,25,50,100,150,200};
+	public static final double[] dinheiroCombustivel = {5,10,20,25,50,100,150,200,20000};
 	
 	//Banco de dados do Condutor
 	public static final String[] CNH = {"65271774050", "97221874150", "78971715757", "19254127891", "67045988812", "91212455578"};

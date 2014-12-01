@@ -5,15 +5,15 @@ public enum Localizacao {
 	
 	private double valorDaViagem;
 	
-	private void setValorViagem(double vl) {
+	private void setValorLocalizacao(double vl) {
 		this.valorDaViagem = vl;
 	}
 	
-	public double getValorViagem() {
+	public double getValorLocalizacao() {
 		return this.valorDaViagem;
 	}
 	
 	private Localizacao(double vl) {
-		this.setValorViagem(vl);
+		this.setValorLocalizacao(vl);
 	}
 }

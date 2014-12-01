@@ -31,6 +31,7 @@ public class Conduzido extends Pessoa {
 	
 	public void sairDoCarro(double valorPagar) {
 		this.setEmViagem(false);
+		System.out.println("O conduzido(a) " + this.getNome() + " chegou a sua localização e esta pagando a viajem no valor de: " + valorPagar + " e esta saindo do carro.");
 		this.setDinheiroParaCombustivel(this.getDinheiroParaCombustivel() - valorPagar);
 	}
 	//Precisa Terminar
@@ -60,10 +61,10 @@ public class Conduzido extends Pessoa {
 		this.localizacaoBairro = localizacaoBairro;
 	}
 	
-	public void validaDadosConduzido() {
-		System.out.print("Validando Dados do Conduzido...");
-		super.validaDados();
-	}
+//	public void validaDadosConduzido() {
+//		System.out.print("Validando Dados do Conduzido...");
+//		super.validaDados();
+//	}
 	
 	public Localizacao getLocalizacaoBairro() {
 		return localizacaoBairro;

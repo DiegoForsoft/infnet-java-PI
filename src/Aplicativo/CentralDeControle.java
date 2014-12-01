@@ -36,45 +36,54 @@ public class CentralDeControle {
 //		}
 //	}
 	
-	public void comecarViagem() {
-		for (Viagem viagem : viagens) { 
-			System.out.println("Iniciando a busca por caronas...\n");
+	public void comecarViagem() throws InterruptedException {
+		int cont = 0;
+		
+		for (Viagem viagem : viagens) {
+			this.separador();
+			System.out.println("O condutor " + viagem.getCondutor().getNome() + " vai passar pelas seguintes localizaçoes: " + viagem.mostraLocalizacoesQueVaiPassar());
+			viagem.metodoComecarViajem();
 			for (Conduzido conduzido : conduzidos) { 
 				for (Localizacao localizacao : viagem.getRotaFinal()) {
-					System.out.println("Passando pela local " + localizacao);
+					cont++;
 					if(conduzido.getLocalizacaoBairro().equals(localizacao) && conduzido.isEmViagem() == false) {
-						viagem.setConduzido(conduzido);
-						System.out.println("Uma viagem foi formada com o conduzido "+ conduzido.getNome() + " Ate "+ conduzido.getLocalizacaoBairro() + "com o condutor " + viagem.getCondutor().getNome());
+						if(viagem.contaValorViagem(cont) <= conduzido.getDinheiroParaCombustivel()) {
+							viagem.setConduzido(conduzido);
+							System.out.println("Uma viagem foi formada com o conduzido "+ conduzido.getNome() + " Ate "+ conduzido.getLocalizacaoBairro() + " com o condutor " + viagem.getCondutor().getNome());
+						}
+						else {
+							System.out.println("\nConduzido " + conduzido.getNome() + " não tem dinheiro suficiente para a viagem.");
+						}
 					}
 				}
+				cont = 0;
 			}
 			viagem.setDataHora(new Date());
+			this.separador();
 		}
 	}
-	
-	public void terminarViagem() {
+	//TODO remover conduzido.
+	public void terminarViagem() throws InterruptedException {
 		double valorPagar = 0;
 		for (Viagem viagem : viagens) {
+			this.separador();
 			for (Conduzido conduzido : viagem.getConduzidos()) {
 				for(Localizacao localizacao : viagem.getRotaFinal()) {
-					valorPagar += localizacao.getValorViagem();
+					viagem.metodoFinalizarViajem();
+					valorPagar += localizacao.getValorLocalizacao();
 					if(conduzido.getLocalizacaoBairro().equals(localizacao)) {						
-						conduzido.pontuarPessoa(((int)Math.random() * 11), viagem.getCondutor());
-						viagem.getCondutor().pontuarPessoa(((int)Math.random() * 11), conduzido);
+						conduzido.pontuarPessoa(((int) (Math.random() * 11)), viagem.getCondutor());
+						viagem.getCondutor().pontuarPessoa(((int) (Math.random() * 11)), conduzido);
 						conduzido.sairDoCarro(valorPagar);
-						viagem.removeConduzido(conduzido);
 					}
 				}
 			}
+			this.separador();
 		}
 	}
 
 	public boolean estaCadastradoCondutor(Condutor obj) {
 		return condutores.contains(obj);
-	}
-	//TODO botar para cadastrar sÃ³ quando a validaÃ§Ã£o for true.
-	private boolean validaPessoa(Condutor obj) {
-		return (obj.toString().matches("\\D+"));
 	}
 	
 	public void cadastrarCondutor(Condutor obj) {		
