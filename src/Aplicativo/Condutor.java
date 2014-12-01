@@ -70,10 +70,10 @@ public class Condutor extends Pessoa {
 		veiculo.mostraVeiculo();
 	}
 	
-	public void validaDadosCondutor() {
-		System.out.print("Validando Dados do Condutor...");
-		super.validaDados();
-	}
+//	public void validaDadosCondutor() {
+//		System.out.print("Validando Dados do Condutor...");
+//		super.validaDados();
+//	}
 	
 	@Override
 	public int hashCode() {

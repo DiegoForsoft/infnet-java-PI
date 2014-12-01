@@ -1,5 +1,7 @@
 package Aplicativo;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,13 +14,25 @@ public class Viagem {
 	private List<Conduzido> conduzidos = new ArrayList<Conduzido>();
 	private List<Localizacao> rota;
 	Date dataHora;
-	private double valorDaViagem;
 
 	public boolean validaCondutor(Condutor obj) {
 		if (obj != null) {
 			return true;
 		}
 		return false;
+	}
+	
+	public void geraLog() throws FileNotFoundException {
+		PrintStream s = new PrintStream("viagens.log");
+		
+		CentralDeControle.separador();
+		s.println("Gerando uma nova viajem.\n");
+		s.println("Condutor da viajem: " + this.getCondutor());
+		s.println("Localizações da viajem: " + this.mostraLocalizacoesQueVaiPassar());
+		s.println("Os conduzidos da viajem são: ");
+		for (Conduzido conduzido : conduzidos) {
+			s.print(conduzido.getNome());
+		}
 	}
 	
 	public void metodoComecarViajem() throws InterruptedException {
@@ -95,14 +109,6 @@ public class Viagem {
 		}
 	}
 
-	public double getValorDaViagem() {
-		return valorDaViagem;
-	}
-
-	public void setValorDaViagem(double valorDaViagem) {
-		this.valorDaViagem = valorDaViagem;
-	}
-
 	public List<Localizacao> getRotaFinal() {
 		return this.rota;
 	}
@@ -177,9 +183,6 @@ public class Viagem {
 		result = prime * result
 				+ ((dataHora == null) ? 0 : dataHora.hashCode());
 		result = prime * result + ((rota == null) ? 0 : rota.hashCode());
-		long temp;
-		temp = Double.doubleToLongBits(valorDaViagem);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
@@ -223,12 +226,7 @@ public class Viagem {
 		} else if (!rota.equals(other.rota)) {
 			return false;
 		}
-		if (Double.doubleToLongBits(valorDaViagem) != Double
-				.doubleToLongBits(other.valorDaViagem)) {
-			return false;
-		}
 		return true;
-	}
-	
+	}	
 	
 }

@@ -19,17 +19,16 @@ public abstract class Pessoa {
 	protected Pessoa(String nome, int idade, String celular, String rg,
 			String cpf, String facebook) {
 
-		this.nome = nome;
-		this.idade = idade;
-		this.celular = celular;
-		this.rg = rg;
-		this.cpf = cpf;
-		this.facebook = facebook;
+		this.setNome(nome);
+		this.setIdade(idade);
+		this.setCelular(celular);
+		this.setRg(rg);
+		this.setCpf(cpf);
+		this.setFacebook(facebook);
 	}
 
 	public void publicarNoFacebook() {
-		System.out.println("Foi publicado no facebook do usuario: "
-				+ this.getNome());
+		System.out.println("Foi publicado no facebook do usuario: "+ this.getNome());
 	}
 
 	public boolean validaIdade() {
@@ -42,66 +41,6 @@ public abstract class Pessoa {
 		}
 
 	}
-
-	// Est√° em avalia√ß√£o.
-	// public ArrayList <Pessoa> pesquisarCarona(ArrayList <Condutor> a,
-	// Conduzido c) {
-	// ArrayList <Pessoa> b = new ArrayList<Pessoa>();
-	// for(Pessoa pessoa: a)
-	// {
-	// if(pessoa.getLocalizacaoBairro() == c.getLocalizacaoBairro()){
-	// b.add(pessoa);
-	// }
-	// }
-	// if(b.size() > 0){
-	// return b;
-	// }
-	// else{
-	// return null;
-	// }
-	// }
-
-	// public ArrayList <Pessoa> pesquisarCarona(ArrayList <Conduzido> a,
-	// Condutor c) {
-	// ArrayList <Pessoa> b = new ArrayList<Pessoa>();
-	// for(Pessoa pessoa: a)
-	// {
-	// if(pessoa.getLocalizacaoBairro() == c.getLocalizacaoBairro()){
-	// b.add(pessoa);
-	// }
-	// }
-	// if(b.size() > 0){
-	// return b;
-	// }
-	// else{
-	// return null;
-	// }
-	// }
-
-	// public boolean validaLocalizacao() {
-	// boolean confirma = false;
-	// localizacaoBairro.toLowerCase();
-	// for(int i = 0; i < localizacaoBairro.length(); i++)
-	// {
-	// if((localizacaoBairro.charAt(i) >= 97) && (localizacaoBairro.charAt(i) <=
-	// 122)){
-	// confirma = true;
-	// }
-	// else{
-	// confirma = false;
-	// break;
-	// }
-	// }
-	// if(confirma)
-	// {
-	// return true;
-	// }
-	// else
-	// {
-	// return false;
-	// }
-	//
-	// }
 
 	public boolean validaCPF() {
 		if ((cpf.length() < 15) && (cpf.charAt(3) == '.')
@@ -264,40 +203,47 @@ public abstract class Pessoa {
 		this.status = status;
 	}
 	
-	public void validaDados()
-	{
-		if(this.validaNome(nome)) {
-			if(this.validaCelular()) {
-				if(this.validaCPF()) {
-					if(this.validaIdade()) {
-						if(this.validaRG()) {
-							if(this.validaFacebook()) {
-								System.out.println("Todos os Dados s„o V·lidos\n");
-							}
-							else {
-								System.out.println("Facebook inv·lido");
-							}
-						}
-						else {
-							System.out.println("RG inv·lido");
-						}
-					}
-					else {
-						System.out.println("Idade inv·lida");
-					}
-				}
-				else {
-					System.out.println("CPF inv·lido");
-				}
-			}
-			else {
-				System.out.println("Celular inv·lido");
-			}
-		}
-		else {
-			System.out.println("Nome inv·lido");
-		}
-	}
+//	public boolean validaDados()
+//	{
+//		if(this.validaNome(nome)) {
+//			if(this.validaCelular()) {
+//				if(this.validaCPF()) {
+//					if(this.validaIdade()) {
+//						if(this.validaRG()) {
+//							if(this.validaFacebook()) {
+//								return true;
+//								System.out.println("Todos os Dados s„o V·lidos\n");
+//							}
+//							else {
+//								return false;
+//								System.out.println("Facebook inv·lido");
+//							}
+//						}
+//						else {
+//							return false;
+//							System.out.println("RG inv·lido");
+//						}
+//					}
+//					else {
+//						System.out.println("Idade inv·lida");
+//						return false;
+//					}
+//				}
+//				else {
+//					System.out.println("CPF inv·lido");
+//					return false;
+//				}
+//			}
+//			else {
+//				System.out.println("Celular inv·lido");
+//				return false;
+//			}
+//		}
+//		else {
+//			System.out.println("Nome inv·lido");
+//			return false;
+//		}
+//	}
 
 	@Override
 	public int hashCode() {

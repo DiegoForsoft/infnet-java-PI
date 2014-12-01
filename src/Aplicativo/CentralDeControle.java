@@ -40,7 +40,7 @@ public class CentralDeControle {
 		int cont = 0;
 		
 		for (Viagem viagem : viagens) {
-			this.separador();
+			CentralDeControle.separador();
 			System.out.println("O condutor " + viagem.getCondutor().getNome() + " vai passar pelas seguintes localizaçoes: " + viagem.mostraLocalizacoesQueVaiPassar());
 			viagem.metodoComecarViajem();
 			for (Conduzido conduzido : conduzidos) { 
@@ -59,14 +59,14 @@ public class CentralDeControle {
 				cont = 0;
 			}
 			viagem.setDataHora(new Date());
-			this.separador();
+			CentralDeControle.separador();
 		}
 	}
 	//TODO remover conduzido.
 	public void terminarViagem() throws InterruptedException {
 		double valorPagar = 0;
 		for (Viagem viagem : viagens) {
-			this.separador();
+			CentralDeControle.separador();
 			for (Conduzido conduzido : viagem.getConduzidos()) {
 				for(Localizacao localizacao : viagem.getRotaFinal()) {
 					viagem.metodoFinalizarViajem();
@@ -78,7 +78,7 @@ public class CentralDeControle {
 					}
 				}
 			}
-			this.separador();
+			CentralDeControle.separador();
 		}
 	}
 
@@ -147,7 +147,7 @@ public class CentralDeControle {
 		}
 	}
 	
-	public void separador()//Separa as informações para uma melhor visualização
+	public static void separador()//Separa as informações para uma melhor visualização
 	{
 		System.out.println("\n----------------------------------------------------------------------------------------------------------------------------------------------\n");
 	}
