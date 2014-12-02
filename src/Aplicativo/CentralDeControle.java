@@ -1,6 +1,7 @@
 package Aplicativo;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ public class CentralDeControle {
 		for (Viagem viagem : viagens) {
 			CentralDeControle.separador();
 			System.out.println("O condutor " + viagem.getCondutor().getNome() + " vai passar pelas seguintes localizaçoes: " + viagem.mostraLocalizacoesQueVaiPassar());
-			viagem.metodoComecarViajem();
+			viagem.metodoComecarViagem();
 			for (Conduzido conduzido : conduzidos) { 
 				for (Localizacao localizacao : viagem.getRotaFinal()) {
 					cont++;
@@ -31,11 +32,16 @@ public class CentralDeControle {
 							System.out.println("Uma viagem foi formada com o conduzido "+ conduzido.getNome() + " Ate "+ conduzido.getLocalizacaoBairro() + " com o condutor " + viagem.getCondutor().getNome());
 						}
 						else {
-							System.out.println("\nConduzido " + conduzido.getNome() + " não tem dinheiro suficiente para a viagem.");
+							System.out.println("\nConduzido(a) " + conduzido.getNome() + " não tem dinheiro suficiente para a viagem.");
 						}
 					}
 				}
 				cont = 0;
+			}
+			try{
+				viagem.getConduzidos().get(0);	
+			}catch(IndexOutOfBoundsException e) {
+				System.out.println("Não foi possivel gerar a viagem pois não existem conduzidos, para a localização do condutor " + viagem.getCondutor().getNome());
 			}
 			viagem.setDataHora(new Date());
 			CentralDeControle.separador();
@@ -43,14 +49,14 @@ public class CentralDeControle {
 	}
 	
 	//TODO remover conduzido.
-	public void terminarViagem() throws InterruptedException, FileNotFoundException {
+	public void terminarViagem() throws InterruptedException, IOException {
 		double valorPagar = 0;
 		for (Viagem viagem : viagens) {
 			viagem.geraLog();
 			System.out.println("Começando a viagem.\n");
 			for (Conduzido conduzido : viagem.getConduzidos()) {
 				for(Localizacao localizacao : viagem.getRotaFinal()) {
-					viagem.metodoFinalizarViajem();
+					viagem.metodoFinalizarViagem();
 					valorPagar += localizacao.getValorLocalizacao();
 					if(conduzido.getLocalizacaoBairro().equals(localizacao)) {						
 						conduzido.pontuarPessoa(((int) (Math.random() * 11)), viagem.getCondutor());
@@ -75,7 +81,7 @@ public class CentralDeControle {
 			
 			if(Pessoa.validaDados(obj) == true) {
 				condutores.add(obj);
-				System.out.println("Condutor(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
+				System.out.println("condutor(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
 			}
 			
 			else {
@@ -98,7 +104,7 @@ public class CentralDeControle {
 			
 			if(Pessoa.validaDados(obj) == true) {
 				conduzidos.add(obj);
-				System.out.println("Conduzido(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
+				System.out.println("conduzido(a) "+obj.getNome()+" foi cadastrado(a) no sistema.\n");
 			}
 			
 			else {
@@ -131,14 +137,14 @@ public class CentralDeControle {
 		}
 	}
 		
-	private boolean temViajem(Viagem obj) {
+	private boolean temViagem(Viagem obj) {
 		return viagens.contains(obj);
 	}
 	
 	public void cadastrarViagem(Viagem obj) {
-		if(temViajem(obj) == false) {
+		if(temViagem(obj) == false) {
 			viagens.add(obj);
-			System.out.println("Viagem cadastrada no sistema\n");
+			System.out.println("Viagem com o condutor " + obj.getCondutor().getNome() + " cadastrada no sistema\n");
 		}
 		else {
 			System.out.println("Impossivel cadastrar uma viagem existente.\n");
