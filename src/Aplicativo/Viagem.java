@@ -1,6 +1,7 @@
 package Aplicativo;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -28,26 +29,26 @@ public class Viagem {
 	
 	public void geraLog() throws FileNotFoundException {
 		DateFormat dt = DateFormat.getDateInstance();
-		PrintStream s = new PrintStream("viagens.log");
+		PrintStream s = new PrintStream(new FileOutputStream("viagens.log", true));
 	
 		dt.format(this.getDataHora());
 		
-		CentralDeControle.separador();
-		s.println("Gerando uma nova viajem.\n");
-		s.println("Condutor da viajem: " + this.getCondutor().getNome());
-		s.println("Localizações da viajem: " + this.mostraLocalizacoesQueVaiPassar());
-		s.print("Os conduzidos da viajem são: ");
-		s.println("Data hora viajem: " + dt.format(this.getDataHora()) + " " + this.getDataHora().getTime());
+		s.println("Gerando uma nova viagem.\n");
+		s.println("Condutor da viagem: " + this.getCondutor().getNome());
+		s.println("Localizações da viagem: " + this.mostraLocalizacoesQueVaiPassar());
+		s.println("Data hora viagem: " + dt.format(this.getDataHora()) + " " + this.getDataHora().getTime());
+		s.print("Os conduzidos da viagem são: ");
 		System.out.println(""  );
 		for (Conduzido conduzido : conduzidos) {
 			s.print(conduzido.getNome());
 			s.print(", ");
 		}
-		System.out.println("Log da viajem atual foi gerado...\n");
+		System.out.println("Log da viagem com o condutor " + this.getCondutor().getNome() + " foi gerado...\n");
 		s.println("\n------------------------------------------------------------------------------");
+		
 	}
 	
-	public void metodoComecarViajem() throws InterruptedException {
+	public static void metodoComecarViagem() throws InterruptedException {
 		System.out.print("Iniciando a busca por caronas...");
 		for(int i = 0; i < 10; i++) {
 			System.out.print(".");
@@ -56,7 +57,7 @@ public class Viagem {
 	    System.out.print("\n");
 	}
 	
-	public void metodoFinalizarViajem() throws InterruptedException {
+	public static void metodoFinalizarViagem() throws InterruptedException {
 		System.out.print("Viajando...");
 		for(int i = 0; i < 2; i++) {
 			System.out.print(".");
@@ -162,26 +163,25 @@ public class Viagem {
 		return this.conduzidos.size();
 	}
 	
-	public void mostrarPessoasEmViajem() {
+	public void mostrarPessoasEmViagem() {
 		System.out.print("Os conduzidos(as): ");
 		for (Conduzido conduzido : conduzidos) {
 			System.out.print(conduzido.getNome() + ", ");
 		}
-		System.out.print("estão em viajem com o condutor " + this.getCondutor().getNome() + "\n\n");
+		System.out.print("estão em viagem com o condutor " + this.getCondutor().getNome() + "\n\n");
+		CentralDeControle.separador();
 	}
 	
 	public Viagem(Condutor condutor) {
 		if(validaCondutor(condutor) == true) {
 			this.condutor = condutor;
 			this.rota = condutor.getLocalizacoes();
+			condutor.setEmViagem(true);
 		}
 		else {
-			System.out.println("Impossivel criar a viajem condutor invalido.\n");
+			System.out.println("Impossivel criar a viagem condutor invalido.\n");
 		}
-	}
-
-	public Viagem() {
-		super();
+		
 	}
 
 	@Override

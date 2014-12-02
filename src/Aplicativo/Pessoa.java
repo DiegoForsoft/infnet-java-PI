@@ -11,7 +11,9 @@ public abstract class Pessoa {
 	protected String CPF;
 	protected String facebook;
 	protected StatusEnum status;
+	protected boolean emViagem = false;
 
+	
 	protected Pessoa() {
 		super();
 	}
@@ -40,6 +42,14 @@ public abstract class Pessoa {
 			return false;
 		}
 
+	}
+	
+	public boolean isEmViagem() {
+		return emViagem;
+	}
+
+	public void setEmViagem(boolean emViagem) {
+		this.emViagem = emViagem;
 	}
 
 	public boolean validaCPF(String cpf) {
@@ -207,7 +217,7 @@ public abstract class Pessoa {
 					if(objRecebido.validaIdade(objRecebido.getIdade())) {
 						if(objRecebido.validaRG(objRecebido.getRg())) {
 							if(objRecebido.validaFacebook(objRecebido.getFacebook())) {
-								System.out.println("Todos os Dados são Válidos\n");
+								System.out.print("Todos os Dados são Válidos, ");
 								return true;
 							}
 							else {

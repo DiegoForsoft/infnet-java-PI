@@ -4,7 +4,6 @@ import Enumeracoes.Localizacao;
 
 public class Conduzido extends Pessoa {
 
-	private boolean emViagem = false;
 	private double dinheiroParaCombustivel;
 	private Localizacao localizacaoBairro;
 
@@ -31,7 +30,7 @@ public class Conduzido extends Pessoa {
 	
 	public void sairDoCarro(double valorPagar) {
 		this.setEmViagem(false);
-		System.out.println("O conduzido(a) " + this.getNome() + " chegou a sua localização e esta pagando a viajem no valor de: " + valorPagar + " e esta saindo do carro.");
+		System.out.println("O conduzido(a) " + this.getNome() + " chegou a sua localização e esta pagando a viagem no valor de: " + valorPagar + " e esta saindo do carro.");
 		this.setDinheiroParaCombustivel(this.getDinheiroParaCombustivel() - valorPagar);
 	}
 	//Precisa Terminar
@@ -61,25 +60,12 @@ public class Conduzido extends Pessoa {
 		this.localizacaoBairro = localizacaoBairro;
 	}
 	
-//	public void validaDadosConduzido() {
-//		System.out.print("Validando Dados do Conduzido...");
-//		super.validaDados();
-//	}
-	
 	public Localizacao getLocalizacaoBairro() {
 		return localizacaoBairro;
 	}
 
 	public void setLocalizacaoBairro(Localizacao localizacaoBairro) {
 		this.localizacaoBairro = localizacaoBairro;
-	}
-
-	public boolean isEmViagem() {
-		return emViagem;
-	}
-
-	public void setEmViagem(boolean emViagem) {
-		this.emViagem = emViagem;
 	}
 
 	public double getDinheiroParaCombustivel() {
