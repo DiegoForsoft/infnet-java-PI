@@ -12,15 +12,41 @@ public class Condutor extends Pessoa {
 	private Veiculo veiculo;
 	private List<Localizacao> localizacoes;
 
+	/**
+	 * Construtor vazio de Conduzido
+	 */
 	public Condutor() {
 		super();
 	}
-
+	
+	/**
+	 * Construtor com os atributos que devem e podem ser iniciados instanciando o mesmo, 
+	 * pois, as outras informações são armazenadas durante os processos do sistema, está herdando pelo super do construtor de pessoa
+	 * @param nome
+	 * @param idade
+	 * @param celular
+	 * @param rg
+	 * @param cpf
+	 * @param facebook
+	 */
 	public Condutor(String nome, int idade, String celular, String rg,
 			String cpf, String facebook) {
 		super(nome, idade, celular, rg, cpf, facebook);
 	}
-
+	
+	/**
+	 * Construtor com todas as informações que devem e podem ser iniciados instanciando o mesmo, 
+	 * pois, as outras informações são armazenadas durante os processos do sistema, está herdando pelo super do construtor de pessoa
+	 * @param cNH
+	 * @param veiculo
+	 * @param nome
+	 * @param idade
+	 * @param celular
+	 * @param rg
+	 * @param cpf
+	 * @param facebook
+	 * @param localizacaoRecebida
+	 */
 	public Condutor(String cNH, Veiculo veiculo, String nome, int idade,
 			String celular, String rg, String cpf, String facebook, List<Localizacao> localizacaoRecebida) {
 		super(nome, idade, celular, rg, cpf, facebook);
@@ -29,13 +55,30 @@ public class Condutor extends Pessoa {
 		this.localizacoes = localizacaoRecebida;
 	}
 	
+	/**
+	 * Construtor com quase todas as informações, com exceção da localização que pode ser colocada em seguida após ser instanciado, 
+	 * as outras informações são armazenadas durante os processos do sistema, está herdando pelo super do construtor de pessoa
+	 * @param cNH
+	 * @param veiculo
+	 * @param nome
+	 * @param idade
+	 * @param celular
+	 * @param rg
+	 * @param cpf
+	 * @param facebook
+	 */
 	public Condutor(String cNH, Veiculo veiculo, String nome, int idade,
 			String celular, String rg, String cpf, String facebook) {
 		super(nome, idade, celular, rg, cpf, facebook);
 		this.CNH = cNH;
 		this.veiculo = veiculo;
 	}
-
+	
+	/**
+	 * Foi realizado validação por expressão regular, foi validado se está neste formato
+	 * @param CNH
+	 * @return
+	 */
 	public boolean validaCNH(String CNH) {
 		if(CNH.matches("\\d{11}") == true) {
 			return true;
@@ -44,21 +87,31 @@ public class Condutor extends Pessoa {
 			return false;
 		}
 	}
-
+	
+	/**
+	 * Atualiza os dados de um determinado condutor, esse método foi sobreescrito da classe pessoa adicionando seus próprios atributos
+	 * @param cNH
+	 * @param veiculo
+	 * @param nome
+	 * @param idade
+	 * @param celular
+	 * @param rg
+	 * @param cpf
+	 * @param facebook
+	 * @param localizacaoBairro
+	 */
 	public void atualizarDados(String cNH, Veiculo veiculo, String nome,
 			int idade, String celular, String rg, String cpf, String facebook,
-			ArrayList <Localizacao> localizacaoBairro) {
+			List <Localizacao> localizacaoBairro) {
+		super.atualizarDados(nome, idade, celular, rg, cpf, facebook);
 		this.CNH = cNH;
 		this.veiculo = veiculo;
-		this.nome = nome;
-		this.idade = idade;
-		this.celular = celular;
-		this.RG = rg;
-		this.CPF = cpf;
-		this.facebook = facebook;
 		this.localizacoes = localizacaoBairro;
+		System.out.println("Condutor(a) " + this.nome + " atualizou seus dados");
 	}
-	
+	/**
+	 * Mostra um determinado conduzido, esse método foi sobreescrito da classe pessoa adicionando a validação se ele está em viagem
+	 */
 	public void mostraCondutor() {
 		System.out.println("Condutor: ");
 		super.mostraPessoa();
@@ -70,11 +123,50 @@ public class Condutor extends Pessoa {
 		veiculo.mostraVeiculo();
 	}
 	
-//	public void validaDadosCondutor() {
-//		System.out.print("Validando Dados do Condutor...");
-//		super.validaDados();
-//	}
+	// Getters and Setters
+	public List<Localizacao> getLocalizacoes() {
+		return localizacoes;
+	}
+	// Getters and Setters
+	public void setLocalizacoes(List<Localizacao> localizacoes) {
+		this.localizacoes = localizacoes;
+	}
+	// Getters and Setters
+	public String getCNH() {
+		return CNH;
+	}
+	// Getters and Setters
+	public void setCNH(String CNH) {
+		if(this.validaCNH(CNH) == true) {
+			this.CNH = CNH;
+		}
+		else {
+			this.CNH = "-1";
+			System.out.println("CNH invalido.");
+		}
+		
+	}
+	// Getters and Setters
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+	// Getters and Setters
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+	// Getters and Setters
+	public void removerVeiculo() {	
+		if(veiculo != null) {
+			this.veiculo = null;
+		}
+		else {
+			System.out.println("Impossivel remover um veiculo que nÃ£o estÃ¡ cadastrado.\n");
+		}
+	}
 	
+	/**
+	 * Foi usado foi usado apra comparação, pois usamos hashSet
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +178,9 @@ public class Condutor extends Pessoa {
 		return result;
 	}
 
+	/**
+	 * O equals foi utilizado como comparação
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -113,43 +208,12 @@ public class Condutor extends Pessoa {
 		return true;
 	}
 
-	public List<Localizacao> getLocalizacoes() {
-		return localizacoes;
-	}
-
-	public void setLocalizacoes(List<Localizacao> localizacoes) {
-		this.localizacoes = localizacoes;
-	}
-
-	public String getCNH() {
-		return CNH;
-	}
-	
-	public void setCNH(String CNH) {
-		if(this.validaCNH(CNH) == true) {
-			this.CNH = CNH;
-		}
-		else {
-			this.CNH = "-1";
-			System.out.println("CNH invalido.");
-		}
-		
-	}
-
-	public Veiculo getVeiculo() {
-		return veiculo;
-	}
-
-	public void setVeiculo(Veiculo veiculo) {
-		this.veiculo = veiculo;
-	}
-	
-	public void removerVeiculo() {	
-		if(veiculo != null) {
-			this.veiculo = null;
-		}
-		else {
-			System.out.println("Impossivel remover um veiculo que nÃ£o estÃ¡ cadastrado.\n");
-		}
+	/**
+	 * Foi feito para debugs
+	 */
+	@Override
+	public String toString() {
+		return "Condutor [CNH=" + CNH + ", veiculo=" + veiculo
+				+ ", localizacoes=" + localizacoes + "]";
 	}
 }
